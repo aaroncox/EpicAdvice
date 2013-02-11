@@ -1,0 +1,13 @@
+<?= $this->render("./profile/_navigation.phtml") ?>
+
+<div>
+<h3 class="content-header">Latest Questions Asked...</h3>
+<? foreach($this->questions as $question): ?>
+	<?= $this->questionStub($question); ?>
+<? endforeach; ?>
+
+<h3 class="content-header">Latest Questions Answered...</h3>
+<? foreach($this->answers as $answer): ?>
+	<?= $this->postStub($answer); ?>
+<? endforeach; ?>		
+</div>

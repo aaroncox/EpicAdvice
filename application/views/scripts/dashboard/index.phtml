@@ -1,0 +1,30 @@
+<? $this->context()
+	->widget($this->render("./_context/dashboard-tags.phtml"))
+	->widget($this->render("./_context/dashboard-help.phtml"))
+	->widget($this->render("./_context/news.phtml"))
+?>
+<? if($this->profile->following->count() > 0): ?>
+	<?php echo $this->paginationControl($this->posts,
+	                                    'Sliding',
+	                                    'dashboard/_pages.phtml'); ?>
+	<? foreach($this->posts as $post): ?>
+		<?= $this->postStub($post) ?>
+	<? endforeach;?>
+	<?php echo $this->paginationControl($this->posts,
+	                                    'Sliding',
+	                                    'dashboard/_pages.phtml'); ?>
+	
+<? else: ?>
+	<div class="padded-10 shadowy rounded light-bg text-medium">
+		<h2>You aren't following anything yet!</h2>
+		<p>Your dashboard is populated with questions, answers, comments, news and posts of the people and tags that you follow on EpicAdvice.com. In order to populate this page, we need to know a few things your interested in, here's some suggestions! (You can use the search in the upper right to find everything)</p>
+		<ul>
+			<li>Follow the classes you play and are are knowledgable about</li>
+			<li>Follow the professions you have/are knowledgable of, help others out.</li>
+			<li>Follow your friends, people you know or even those you don't!</li>
+			<li>Follow your favorite websites, fansites or blogs (if they are on the site)</li>
+			<li>Follow your favorite dungeon, zone or even skill...</li>
+		</ul>
+		<p>Keep in mind, to view everything, you can still use the questions page. This dashboard has been designed to help you customize the page to your specific interests.</p>
+	</div>
+<? endif; ?>

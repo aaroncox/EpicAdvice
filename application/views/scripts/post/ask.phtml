@@ -1,0 +1,11 @@
+<?php $this->headTitle("Ask a Question"); ?>
+<? $this->context()->widget($this->render("_context/question-help.phtml")) ?>
+<h1 style="padding: 10px">Ask A Question about World of Warcraft</h1>
+<?= $this->form ?>
+<script type="text/javascript">
+	$(function(){
+   	var markedit = $('#source').markedit({'preview': 'below'}).focus(function() { $("#wmd-preview").show(); });
+		$(markedit).markeditBindAutoPreview($('#wmd-preview'));
+		$(".markedit-preview").hide();
+ 	});
+</script>

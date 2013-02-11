@@ -1,0 +1,12 @@
+<? $this->context()->widget("
+	<h1>Tags on EpicAdvice.com</h1>
+	<p>These are the tags we use here on EpicAdvice. These tags will be evolving overtime, into more than just tags. Classes will become classes, items will be items, etc etc... all that and more to come.<?p>
+")?>
+<?php echo $this->paginationControl($this->records,
+                                    'Sliding',
+                                    'user/_pagination.phtml'); ?>
+<div class="card-list wide">
+	<?php foreach ($this->records as $record): ?>
+		<?= $this->card($record['record'], array('class' => 'medium-icon', 'content' => array('used in' => $record['count']." questions"))) ?>
+	<?php endforeach ?>
+</div>

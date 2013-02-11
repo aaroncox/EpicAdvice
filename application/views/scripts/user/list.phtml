@@ -1,0 +1,11 @@
+<?php $this->headTitle('User Listing'); ?>
+<h1>User Listing</h1>
+<a href="<?= $this->url(array('action'=>'edit', 'id'=>'new')) ?>">Create New User</a>
+<table id="rri_support_users">
+  <thead>
+<?= $this->partial("user/_userrow.phtml", array("header"=>true))?>
+  </thead>
+  <tbody>
+<?= $this->partialLoop()->setObjectKey("user")->partialLoop("user/_userrow.phtml", $this->users); ?>
+  </tbody>
+</table>

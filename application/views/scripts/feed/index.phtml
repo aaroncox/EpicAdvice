@@ -1,0 +1,13 @@
+<?php $this->headTitle($this->profile->name."'s Feed"); ?>
+<div id="profileColumn" class="inline-flow">
+	<?= $this->render("./profile/_sidebar.phtml") ?>
+</div>
+<div id="contentColumn" class="inline-flow rounded">
+	<?= $this->render("./feed/_navigation.phtml") ?>
+	<? foreach($this->feed as $post): ?>
+		<?= $this->feedPost($post) ?>
+	<? endforeach;?>
+</div>
+<div id="contextColumn" class="inline-flow">
+	<?= $this->render("./profile/_context-bar.phtml") ?>
+</div>

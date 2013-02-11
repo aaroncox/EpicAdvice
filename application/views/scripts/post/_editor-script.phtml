@@ -1,0 +1,7 @@
+<script type="text/javascript">
+	$(function(){
+   	var markedit = $('#source').markedit({'preview': 'below'}).focus(function() { $("#wmd-preview").show(); });
+		$(markedit).markeditBindAutoPreview($('#wmd-preview'));
+		$(".markedit-preview").hide();
+ 	});
+</script>

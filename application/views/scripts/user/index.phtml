@@ -1,0 +1,15 @@
+<? $this->context()->widget("
+	<h1>The users of EpicAdvice.com</h1>
+	<p>These are the users of EpicAdvice, feel free to browse through everyone and follow those you find interesting!<?p>
+")?>
+<?php echo $this->paginationControl($this->profiles,
+                                    'Sliding',
+                                    'user/_pagination.phtml'); ?>
+<div class="card-list wide">
+	<?php foreach ($this->profiles as $profile): ?>
+		<?= $this->card($profile, array('class' => 'wide')) ?>
+	<?php endforeach ?>
+</div>
+<?php echo $this->paginationControl($this->profiles,
+                                    'Sliding',
+                                    'user/_pagination.phtml'); ?>

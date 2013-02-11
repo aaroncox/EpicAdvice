@@ -1,0 +1,8 @@
+<?php $uri = "http://"$_SERVER['HTTP_HOST'].$this->url(array(
+  'action'=>'forgot',
+  'id'=>$this->forgot->user_id,
+  'key'=>$this->forgot->key,
+), 'mw_auth_user', true) ?>
+You have requested to reset your password on our site.
+
+Please visit: <a href="<?= $uri ; ?>"><?=$uri?></a> where you will be asked to set a new password.

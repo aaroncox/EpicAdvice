@@ -1,0 +1,55 @@
+<a name="<?= $this->answer->id ?>"></a>
+<div class="answer" id="answer-<?= $this->answer->id ?>">
+	<table>
+		<tbody>
+			<tr>
+				<td class="votecell">
+					<?= $this->voteWidget($this->answer) ?>
+				<td>
+					<div class="post-meta">
+						Posted on <?= $this->postLink($this->answer, array("text" => $this->timeAgo($this->answer->_created))) ?> by <?= $this->profileLink($this->answer->tags->getTag('author'))?>
+					</div>
+					<div class="post-text rounded">
+						<?= $this->answer->body ?>
+					</div>
+					<div class="post-taglist inline-flow">
+						<? foreach($this->answer->tags as $tag): ?>
+							<? if($tag->reason != 'tag') continue;?>
+							<div class="inline-flow db-card medium-icon transparent-bg rounded">
+								<?= $this->card($tag->ref, array("class" => "medium-icon")) ?>
+							</div>
+						<? endforeach; ?>
+					</div>
+					<?= $this->card($this->answer->tags->getTag('author'), array("class" => "wide"))?>
+				</td>
+			</tr>
+			<tr>
+				<td class="votecell"></td>
+				<td>
+					<div class="post-comments">
+						<div class="comments-container" id="comments-<?= $this->answer->id ?>">
+							<div class="comments">
+								<table>
+									<tbody>
+										<? foreach($this->answer->findResponses() as $comment): ?>
+											<?= $this->partial("./post/se/_comment.phtml", array("comment" => $comment))?>
+										<? endforeach; ?>
+									</tbody>
+								</table>
+							</div>
+							<form class="post-comments" id="form-comments-<?= $this->answer->id ?>"></form>
+						</div>
+						<?= $this->button(array(
+							'action'=>'comment',
+							'post'=>$this->answer,
+						), 'post', true, array(
+							'icon' => 'reply',
+							'text' => 'leave comment',
+							'requirePriv' => 'create',
+						)); ?>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

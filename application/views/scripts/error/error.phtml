@@ -1,0 +1,40 @@
+<h1>An error occurred</h1> 
+<h2><?= $this->message ?></h2> 
+
+<h1>An error occurred</h1> 
+<h2><?= $this->message ?></h2> 
+
+<?php if ('development' == $this->env || MW_Auth::getInstance()->hasPrivilege(new MW_Auth_Resource_User('error'))): ?> 
+    <h3>Exception information:</h3> 
+    <p> 
+      <?= $this->escape( get_class($this->exception) ); ?>
+        <b>Message:</b> <?= $this->exception->getMessage() ?> 
+    </p> 
+
+    <h3>Stack trace:</h3> 
+    <ul class='errors'  style='overflow:scroll'>
+    <?php foreach ($this->exception->getTrace() as $stack => $trace): ?>
+      <li>
+        <?php if (isset($trace['file']) && isset($trace['line'])): ?>
+          <a href='txmt://open?url=file://<?= $this->escape( $trace["file"] ); ?>&line=<?= $this->escape( $trace["line"] ); ?>'>[e]</a>          
+          <?= $this->escape( $trace["file"].":".$trace["line"] ); ?><br />
+        <?php endif ?>
+          <?php if (isset($trace["class"])): ?>
+            <?= $this->escape( $trace["class"].$trace["type"]); ?>
+          <?php endif ?>
+          <?= $this->escape( $trace["function"] ); ?>
+          <?php if (count($trace["args"])): ?>
+            (<?php foreach ($trace["args"] as $arg): ?>
+              ...
+              ,
+            <?php endforeach ?>)
+          <?php endif ?>
+          <?php if ('development' == $this->env): ?> 
+            <?php var_dump($trace); ?>
+          <?php endif; ?>
+        </li>
+    <?php endforeach ?>
+    </ul>
+    <h3>Request Parameters:</h3> 
+    <pre><? var_dump($this->request->getParams()) ?></pre> 
+<? endif ?>

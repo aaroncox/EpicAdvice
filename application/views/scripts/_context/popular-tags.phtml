@@ -1,0 +1,4 @@
+<h2 class="section-header">Popular Tags</h2>
+<div class="font-sans text-medium" style="text-align: center">
+	<?= $this->iconCloud(EpicDb_Mongo::db('post')->getPopularTags(50)) ?>
+</div>

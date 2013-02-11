@@ -1,0 +1,91 @@
+<!DOCTYPE html5>
+<html> 
+<head>  
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<?
+		// This should be moved, but we need to launch!
+		if($this->question) {
+			echo $this->htmlTag("meta", array(
+				'name' => 'description',
+				'content' => $this->question->title.", EpicAdvice.com - The World of Warcraft Question and Answer Website",
+			));
+			echo $this->htmlTag("meta", array(
+				'name' => 'keywords',
+				'content' => strtolower(str_replace(" ",", ", $this->question->title)).', World of Warcraft, WoW, Questions, Advice, Classes, Skills',
+			));
+		}
+	?>
+  <?= $this->headTitle("EpicAdvice.com")->setSeparator(" :: "); ?>
+	<?= // Non-cached JS goes here
+			$this->headScript()
+						->appendFile('http://static.wowhead.com/widgets/power.js') 
+	?>
+  <?= $this->bundleScript()
+						->appendFile('/js/jquery-1.5.2.min.js')
+						->appendFile('/js/openid-jquery.js')
+						->appendFile('/js/openid-en.js')
+						->appendFile('/js/jquery-ui-1.8.12.custom.min.js')
+						->appendFile('/js/site.js')
+						->appendFile('/js/epicadvice.js')
+						->appendFile('/js/showdown.js')
+						->appendFile('/js/markedit.js'); 
+					?>
+  <?= $this->bundleLink()
+						->appendStylesheet("/css/redmond/jquery-ui-1.8.12.custom.css")
+						->appendStylesheet('/css/epicadvice.css','all')
+						->appendStylesheet('/css/epic-db.css','all')
+						->appendStylesheet('/css/markedit.css','all') 
+					?>
+	</head>
+	<body>
+		<div id="menu-bar" class="">
+			<div id="menu-bar-user" class="inline-flow">
+				<?= $this->render("awesome/_menubar.phtml"); ?>
+				<div id="explore" class="inline-flow">
+					<?= $this->render("awesome/_explore.phtml")?>
+				</div>
+			</div>
+		</div>		
+		<div id="container">
+			<div id="header">
+				<div id="logo" class="inline-flow">
+					<a href="/"><img src="/images/logo.png" alt='EpicAdvice.com Logo'/></a>
+				</div>
+				<div id="search-area" class="inline-flow">
+					<div class="inline-flow" id="searchBox">
+						<form accept-charset="utf-8" method="get" action="/search/question">
+							<div class="inline-flow" id="searchBoxArea">
+								<input type="text" id="searchInput" value="Search Questions, Players, Tags and More!" name="q">
+							</div>
+							<div class="inline-flow" id="searchBoxButton">
+								<input type="image" id="searchSubmit" value="Search" name="searchSubmit" src="/images/search-button.png">
+							</div>
+						</form>
+						<div class="rounded transparent-bg" id="searchResults">
+							<h3>Search Results</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?= $this->render("_system-message.phtml")?>
+			<div id="navigation" class="ui-helper-clearfix">
+				<? if(EpicDb_Auth::getInstance()->getUser()): ?>
+					<?= $this->button(array('controller' => 'dashboard'), 'default', true, array(
+						'text' => 'Dashboard',
+						'icon' => 'signal-diag',
+					))?>
+				<? endif; ?>
+				<?= $this->button(array('action' => null), 'question-list', true, array(
+					'text' => 'Questions',
+					'icon' => 'help',
+				))?>
+				<?= $this->button(array('action' => null), 'mw_auth_user', true, array(
+					'text' => 'Users',
+					'icon' => 'person',
+				))?>
+				<?= $this->button(array('action' => null), 'se_question_ask', true, array(
+					'text' => 'Ask a Question',
+					'icon' => 'notice',
+					'style' => 'float: right',
+				))?>
+			</div>

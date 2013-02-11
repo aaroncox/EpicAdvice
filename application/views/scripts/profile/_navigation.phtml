@@ -1,0 +1,23 @@
+<ul class="tab-system rounded center-shadow font-header dark-bg">
+	<li>Sections:</li>
+	<li <? if($this->action == 'view') { echo " class='selected'"; }?>>
+		<a href="<?= $this->escape( $this->url(array(
+			'action'=>'view',
+			'profile'=>$this->profile,
+		), 'profile') ); ?>" rel="no-tooltip">Information</a>
+	</li>
+	<li <? if($this->action == 'history') { echo " class='selected'"; }?>>
+		<a href="<?= $this->escape( $this->url(array(
+			'action'=>'history',
+			'profile'=>$this->profile,
+		), 'profile') ); ?>" rel="no-tooltip">Post History</a>
+	</li>
+	<? if(EpicDb_Auth::getInstance()->hasPrivilege($this->profile, 'edit')): ?>
+	<li <? if($this->action == 'edit') { echo " class='selected'"; }?>>
+		<a href="<?= $this->escape( $this->url(array(
+			'action'=>'edit',
+			'profile'=>$this->profile,
+		), 'profile') ); ?>" rel="no-tooltip">Edit Profile</a>
+	</li>	
+	<? endif; ?>
+</ul>

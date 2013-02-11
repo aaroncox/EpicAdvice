@@ -1,0 +1,8 @@
+<?= $this->render("./record/_navigation.phtml") ?>
+<? foreach($this->adminForms as $name => $form): ?>
+	<div class="messageBody rounded">
+	<h2><?= $form->title ?></h2>
+	<p><?= $form->description ?></p>
+	<?= $form ?>
+	</div>
+<? endforeach; ?>

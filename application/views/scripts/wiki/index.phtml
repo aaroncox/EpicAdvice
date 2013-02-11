@@ -1,0 +1,14 @@
+<h1>Wiki Editor</h1>
+<?= $this->form ?>
+<div class="ui-helper-clearfix">
+	<div id="wmd-preview" class="wmd-preview post-text rounded light-bg padded-20 shadowy">
+		<h3>Preview of your answer...</h3>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+   	var markedit = $('#source').markedit({'preview': 'below'});
+		$(markedit).markeditBindAutoPreview($('#wmd-preview'));
+		$(".markedit-preview").hide();
+ 	});
+ </script>

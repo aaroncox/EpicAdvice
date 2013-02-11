@@ -1,0 +1,5 @@
+<div class="comment-text">
+	<?= $this->comment->body ?>
+	–&nbsp;<?= $this->profileLink($this->comment->tags->getTag('author')) ?>
+	<span class="comment-date"><span title="<?= date(DATE_W3C, $this->comment->_created) ?>">(<?= $this->timeAgo($this->comment->_created)?>)</span></span>
+</div>

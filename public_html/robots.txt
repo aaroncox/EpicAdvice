@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /users/
+Disallow: /user/
+Disallow: /question/*/revisions
+Disallow: /question/*/source
+Disallow: /question/*/edit
+Disallow: /question/*/comment
+Allow: /

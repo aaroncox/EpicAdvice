@@ -1,0 +1,23 @@
+<ul class="tab-system rounded center-shadow font-header dark-bg">
+	<li>Sections:</li>
+	<li <? if($this->action == 'view') { echo " class='selected'"; }?>>
+		<a href="<?= $this->escape( $this->url(array(
+			'action'=>'view',
+			'record'=>$this->record,
+		), 'record') ); ?>" rel="no-tooltip">Information</a>
+	</li>
+	<li <? if($this->action == 'related') { echo " class='selected'"; }?>>
+		<a href="<?= $this->escape( $this->url(array(
+			'action'=>'related',
+			'record'=>$this->record,
+		), 'record') ); ?>" rel="no-tooltip">Related Posts</a>
+	</li>
+	<? if(EpicDb_Auth::getInstance()->hasPrivilege($this->record, 'edit')): ?>
+	<li <? if($this->action == 'edit') { echo " class='selected'"; }?>>
+		<a href="<?= $this->escape( $this->url(array(
+			'action'=>'admin',
+			'record'=>$this->record,
+		), 'record') ); ?>" rel="no-tooltip">Administrate</a>
+	</li>	
+	<? endif; ?>
+</ul>

@@ -1,0 +1,20 @@
+<div class="post-meta">
+	<?php if ($this->rev->_lastEditedReason): ?>
+		"<span class="messageType"><?= $this->escape($this->rev->_lastEditedReason) ?></span>" - 
+	<?php endif ?>												
+	<span class="messageType">Revision #<?= $this->idx + 1 ?></span>
+	by <?= ($this->rev->_lastEditedBy->export() == array()) ? "Owner":  $this->profileLink($this->rev->_lastEditedBy) ?> 
+	(<?= $this->timeAgo($this->rev->_lastEdited)?>)
+</div>
+<div class="post-text rounded light-bg padded-20 shadowy">
+	<?= $this->rev->body ?>
+	<div class="messageActions ui-helper-clearfix">
+		<?= $this->button(array(
+			'action'=>'source',
+			'rev'=>$this->idx,
+		), 'post', false, array(
+			'icon' => 'script',
+			'text' => 'View Source'
+		)); ?>
+	</div>
+</div>

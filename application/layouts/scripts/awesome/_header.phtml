@@ -1,0 +1,47 @@
+<div id="header">
+	<div id="logo" class="inline-flow">
+		<a href="/"><img src="/images/logo.png" alt='EpicAdvice.com Logo'/></a>
+	</div>
+	<div id="search-area" class="inline-flow">
+		<div class="inline-flow" id="searchBox">
+			<form accept-charset="utf-8" method="get" action="/search">							
+				<div class="inline-flow" id="searchBoxArea">
+					<input type="text" id="searchInput" value="Search Questions, Players, Tags and More!" name="q">
+				</div>
+				<div class="inline-flow" id="searchBoxButton">
+					<input type="image" id="searchSubmit" value="Search" name="searchSubmit" src="/images/search-button.png">
+				</div>
+			</form>
+			<div class="rounded transparent-bg" id="searchResults">
+				<h3>Search Results</h3>
+			</div>
+		</div>
+	</div>
+</div>
+<?= $this->render("_system-message.phtml")?>
+<div id="navigation" class="ui-helper-clearfix">
+	<?= $this->button(array(
+		'controller' => 'post', 
+		'action' => 'questions',
+	), null, true, array(
+		'text' => 'Questions',
+		'icon' => 'help',
+	))?>
+	<?= $this->button(array('action' => null), 'tags', true, array(
+		'text' => 'Tags',
+		'icon' => 'tag',
+	))?>
+	<?= $this->button(array(
+		'action' => null
+	), 'mw_auth_user', true, array(
+		'text' => 'Users',
+		'icon' => 'person',
+	))?>
+	<?= $this->button(array(
+		'action' => null
+	), 'se_question_ask', true, array(
+		'text' => 'Ask a Question',
+		'icon' => 'notice',
+		'style' => 'float: right',
+	))?>
+</div>

@@ -1,0 +1,32 @@
+<div class="search-result-header rounded shadowy">
+	<h1 class="font-serif">Search Results (<?= $this->questions->getTotalItemCount() ?> found)</h1>
+	<?php if (count($this->searchTerms['tagged'])): ?>
+		<h2 class="text-small">Filtering on tags:
+			<?php foreach ($this->searchTerms['tagged'] as $tag): ?>
+				<?php if ($tag instanceOf EpicDb_Mongo_Record): ?>
+					<?= $this->recordLink($tag, array(
+						"class" => "record-tag rounded", 
+						"text" => 
+							$this->htmlTag("img", array("class" => "tag-icon", "src" => $tag->getIcon()), " ")."".
+							$this->htmlTag("span", array("class" => "tag-name font-serif"), $tag->name)
+					)); ?>
+				<?php else: ?>
+					<?= $this->profileLink($tag); ?>
+				<?php endif ?>
+			<?php endforeach ?>
+		</h2>
+	<?php endif ?>
+	<?php if (count($this->searchTerms['contains'])): ?>
+		<h2 class="text-small">Containing: <?= $this->escape( "\"".implode($this->searchTerms['contains'], "\" or \"")."\"" ); ?></h2>
+	<?php endif ?>
+</div>
+
+<?php echo $this->paginationControl($this->questions,
+                                    'Sliding',
+                                    'post/_pages.phtml'); ?>
+<? foreach($this->questions as $question): ?>
+	<?= $this->questionStub($question); ?>
+<? endforeach; ?>
+<?php echo $this->paginationControl($this->questions,
+                                    'Sliding',
+                                    'post/_pages.phtml'); ?>

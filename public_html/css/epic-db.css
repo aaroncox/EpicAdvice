@@ -1,0 +1,611 @@
+img { border: 0; }
+
+.tags-autocomplete .ui-menu-item,
+.inline-flow {
+	display: -moz-inline-stack;
+	display: inline-block;
+	text-align: left;
+	vertical-align: top;
+	zoom: 1;
+	*display: inline;
+	_height: auto;
+}
+.ui-autocomplete {
+  max-width: 700px;
+}
+
+.transparent-bg {
+	/* Fallback for web browsers that doesn't support RGBa */
+	background: rgb(0, 0, 0);
+	/* RGBa with 0.6 opacity */
+	background: rgba(0, 0, 0, 0.6);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+
+.record-info a {
+	text-decoration: none;
+}
+
+.record-icon {
+	border: 3px solid #fff;
+	position: relative;
+}
+
+.record-icon.small img,
+.record-icon.small {
+	width: 24px;
+	height: 24px;
+}
+.record-icon.small {
+	border: 1px solid #C9B86F;
+}
+.db-card {
+	margin: 3px 1px;
+	min-width: 144px;
+}
+.db-card.wide {
+	width: 235px;
+}
+.db-card.wide .record-info {
+  padding: 2px 7px;
+  width: 136px;
+  overflow: hidden;
+}
+.db-card.post-tag {
+  width: auto;
+  min-width: 0;
+  margin-right: 5px;
+}
+.db-card.post-tag .record-score {
+  display: none;
+}
+.db-card.wide .record-icon {
+	border: 3px solid #FFF;
+	margin-left: -4px;
+	margin-top: -2px;
+	margin-bottom: -2px;
+}
+/* Medium Card size */
+.medium-icon .record-icon {
+	height: 48px;
+	width: 48px;
+}
+.medium-icon .record-icon img {
+	height: 46px;
+	width: 46px;
+	border: 1px solid #424242;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	
+}
+.test-half-banner {
+  width: 234px;
+  height: 60px;
+  background-color: #ff0000;
+}
+.medium-icon.db-card .record-icon {
+  border-width: 1px;
+}
+.medium-icon.db-card {
+  width: 150px;
+  overflow: hidden;
+}
+.medium-icon.db-card .record-score {
+  padding: 1px;
+  bottom: 1px;
+  right: 1px;
+}
+.medium-icon.db-card .record-info {
+  width: 85px;
+  overflow: hidden;
+}
+.db-card a {
+  color: #000;
+}
+.db-card.wide a img {
+  border: 1px solid #424242;
+}
+.db-card.medium-icon.hide-info {
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+	margin-right: 3px;
+}
+.db-card.hide-info .record-info {
+  width: 0px;
+}
+.db-card.show-info .record-info,
+.db-card.show-info {
+  width: auto;
+  max-width: auto;
+}
+.record-info {
+  color: #000;
+  padding: 2px 5px;
+  font-size: 11px;
+  font-weight: normal;
+}
+
+.record-info p {
+	margin: 1px 0 0 0;
+}
+.record-info h1,
+.record-info h2,
+.record-info h3,
+.record-info h4 {
+	margin: 0;
+	color: #000;
+}
+.record-info p span.timeAgo {
+  color: #000;
+}
+
+.text-verysmall {
+	font-size: 10px;
+}
+.text-small {
+	font-size: 11px;
+}
+.text-medium {
+	font-size: 12px;
+}
+.text-large {
+	font-size: 14px;
+}
+.text-verylarge {
+	font-size: 18px;
+}
+.padded {
+	padding: 3px;
+}
+.dark-bg {
+  color: #ddd;
+  background-color: #141414;
+}
+.light-bg {
+  color: #141414;  
+  background: #ECECEC;
+}
+.padded-10 {
+  padding: 3px 10px;
+}
+.padded-20 {
+  padding: 6px 20px;
+}
+
+.rounded {
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+
+.post-taglist {
+	width: 485px;
+}
+.post-taglist.wide {
+  margin-left: 70px;
+  width: 665px;
+}
+.post-taglist h3 {
+  color: #424242;
+  margin: 4px 10px;
+}
+.post-author {
+  margin-top: 5px;
+}
+.post-text {
+	min-height: 100px;
+	font-size: 13px;
+	line-height: 15px;
+	margin: 5px 0 5px 50px;
+}
+.post-stub .post-text {
+  background-color: #ECECEC;
+  margin: 0;
+  padding: 10px;
+  font-weight: normal;
+}
+
+.post-comments {
+	width: 700px;
+}
+.comment-text {
+	padding: 5px;
+	width: 600px;
+	border-bottom: 1px dotted #2F2F2F;
+}
+
+/*
+	Simple OpenID Plugin
+	http://code.google.com/p/openid-selector/
+
+	This code is licensed under the New BSD License.
+*/
+
+#openid_form {
+	width: 580px;
+}
+
+#openid_form legend {
+	font-weight: bold;
+}
+
+#openid_choice {
+	display: none;
+}
+
+#openid_input_area {
+	clear: both;
+	padding: 10px;
+}
+
+#openid_btns, #openid_btns br {
+	clear: both;
+}
+
+#openid_highlight {
+	padding: 3px;
+	background-color: #FFFCC9;
+	float: left;
+}
+
+.openid_large_btn {
+	width: 100px;
+	height: 60px;
+/* fix for IE 6 only: http://en.wikipedia.org/wiki/CSS_filter#Underscore_hack */
+	_width: 102px;
+	_height: 62px;
+
+	border: 1px solid #DDD;
+	margin: 3px;
+	float: left;
+}
+
+.openid_small_btn {
+	width: 24px;
+	height: 24px;
+/* fix for IE 6 only: http://en.wikipedia.org/wiki/CSS_filter#Underscore_hack */
+	_width: 26px;
+	_height: 26px;
+
+	border: 1px solid #DDD;
+	margin: 3px;
+	float: left;
+}
+
+a.openid_large_btn:focus {
+	outline: none;
+}
+
+a.openid_large_btn:focus {
+	-moz-outline-style: none;
+}
+
+.openid_selected {
+	border: 4px solid #DDD;
+}
+#tags-label,
+#title-label,
+#reason-label, 
+#source-label {
+	border-bottom: 1px solid #000;
+	margin: 10px 5px;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+#reason-element, 
+#tags-element,
+#title-element,
+#source-element {
+  margin: 5px 0;
+}
+#reason-element p.description, 
+#tags-element p.description,
+#title-element p.description,
+#source-element p.description {
+  padding: 5px 10px;
+  line-height: 1.2em;
+}
+#buttons-element {
+	text-align: center;
+}
+#wmd-preview {
+	margin-left: 40px;
+}
+.post-moderate {
+  margin: 3px 10px;
+	float: right;
+	font-weight: bold;
+}
+
+.epicdb-button {
+	/* Layout */
+	cursor: pointer;
+	display: inline-block;
+	margin: 2px;
+	outline: 0 none;
+	padding: 0.2em 1em;
+	position: relative;
+	text-align: center;
+}
+.epicdb-button-icon-left {
+	padding-left: 2.1em;
+}
+.epicdb-button-icon-left .ui-icon {
+	left: 0.2em;
+	margin-left: 0;
+	right: auto;
+}
+.epicdb-dialog .ui-icon,
+.epicdb-button .ui-icon {
+	margin-top: -10px;
+	position: absolute;
+	top: 50%;
+}
+
+.epicdb-button.voteCaster .ui-icon {
+	margin-top: -8px;
+	margin-left: 6px;
+}
+
+.record-score {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: #ececec;
+	padding: 3px;
+	color: #000;
+	font-size: 11px;
+	line-height: 10px;
+	font-weight: bold;
+	border-top: 1px solid #424242;
+	border-left: 1px solid #424242;
+	-moz-border-radius-topleft: 3px;
+	border-top-left-radius: 3px;
+}
+
+#column-profile-3c {
+	position: relative;
+	z-index: 10000;
+	width: 242px;
+	padding-top: 5px;
+}
+#column-content-3c {
+	padding: 0px 3px;
+	padding-top: 5px;
+	width: 670px;
+}
+
+#column-content-3c .question-summary {
+	width: 700px;
+
+}
+#column-content-3c .question-summary .summary {
+  width: 415px;
+}
+#column-content-3c #subheader {
+	width: 650px !important;
+}
+
+#column-profile-3c .widget {
+	background-color: #202020;
+	border: 2px solid #404040;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+#summaryColumn .widget h2 {
+	color: #FFD400;
+	font-size: 0.75em;
+	line-height: 16px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	padding-left: 10px;
+}
+
+#summaryColumn .widget p.detail {
+	padding: 5px;
+}
+
+#summaryColumn .widget p.detail span.field {
+	font-weight: bold;
+}
+
+ul.tab-system-submenu,
+ul.tab-system {
+	list-style: none;
+	display: block;
+	margin: 3px 0;
+	padding: 3px 20px;
+}
+ul.tab-system-submenu {
+	height: 24px;
+}
+ul.tab-system-submenu li,
+ul.tab-system li {
+	display: inline-block;
+	padding: 0px 2px;
+	color: #ECECEC;
+	font-size: 17px;
+}
+ul.tab-system-submenu li {
+	font-size: 13px;
+}
+ul.tab-system-submenu li a,
+ul.tab-system li a {
+	padding: 3px 10px;
+	color: #FFD400;
+}
+ul.tab-system-submenu li a:hover,
+ul.tab-system li a:hover {
+	color: #000;
+	background-color: #C9B86F;
+}
+ul.tab-system-submenu li.selected {
+	background-color: #386BA1;
+}
+ul.tab-system li.selected a {
+  background-color: #386BA1;
+}
+.ad-pre-answer, 
+.ad-post-answer {
+  margin: 10px 0;
+  text-align: center;
+}
+.ad-pre-answer h3, 
+.ad-post-answer h3 {
+  font-size: 0.75em;
+  font-weight: bold;
+}
+#column-content-3c .content-header {
+  margin: 10px;
+  font-size: 1.3em;
+}
+#column-content-3c .question-summary {
+  float: none;
+  width: 660px;
+}
+#column-content-3c .question-summary:last-child {
+  border-bottom: 0;
+}
+
+#column-context-3c {
+  padding-top: 5px;
+  margin-left: 2px;
+  width: 160px;
+}
+
+.tags-autocomplete .ui-menu-item {
+	float:none;
+	clear:none;
+	display: -moz-inline-stack;
+	display: inline-block;
+	text-align: left;
+	vertical-align: top;
+	zoom: 1;
+	*display: inline;
+	_height: auto;
+	width: auto;
+}
+#mainbar h1 {
+  margin: 0 20px;
+}
+.post-meta {
+  text-align: right;
+  font-size: 10px;
+  margin-right: 20px;
+  color: #424242;
+}
+.votecell .vote {
+  margin-top: 15px;
+}
+.post-vote {
+  text-align: center;
+  float: left;
+  padding: 3px 5px;
+}
+.post-vote .vote-count {
+	background: #424242;
+	margin: 5px 0;
+	font-size: 1.75em;
+	line-height: 2em;
+	padding-bottom: 0.2em;
+}
+.question-comment {
+	position: relative;
+	margin: 5px 0px;
+}
+.comment-vote-area {
+	width: 70px;
+	padding: 5px;
+	text-align: right;
+}
+.comment-vote {
+  line-height: 14px;
+}
+.comment-vote .vote-count {
+	display: inline;
+	color: #2E6E9E;
+	font-size: 14px;
+	padding: 5px;
+	border: none;
+	background: transparent;
+}
+.post-vote .is-accepted {
+	font-size: 48px;
+}
+.card-list.wide .db-card {
+  margin: 3px;
+  
+}
+.tag-icon,
+.tag-icon img {
+  padding: 1px;
+  border: none;
+  vertical-align: middle;
+  height: 16px;
+  width: 16px;
+}
+.tag-name {
+  padding-left: 5px;
+}
+.sortingControl {
+  margin-top: 5px;
+  padding: 2px;
+}
+.wiki-block {
+  background-color: #ececec;
+  margin: 5px;
+}
+.wiki-block .header {
+
+}
+
+.sidebar-widget ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar-widget ul li {
+  border-bottom: 1px dotted #acacac;
+  padding-bottom: 1px;
+  margin-bottom: 1px;
+}
+.sidebar-widget a {
+
+}
+.sidebar-widget {
+  background-color: #ececec;
+  color: #141414;
+  padding: 7px 4px;
+  margin: 3px;
+}
+.sidebar-widget h3,
+.sidebar-widget h2,
+.sidebar-widget h1 {
+  margin: 3px;
+  margin-top: 0;
+}
+.icon-cloud.icon {
+  margin: 1px;
+}
+.column-sidebar-2c,
+.column-content-2c {
+  padding: 3px;
+  margin: 5px 0;
+}
+.column-sidebar-2c {
+  width: 320px;
+}
+.column-content-2c {
+  width: 740px;
+}
+.column-content-2c .question-summary {
+  padding-right: 8px;
+}

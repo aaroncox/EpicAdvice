@@ -1,0 +1,5 @@
+<? if($this->post->_type == 'question'): ?>
+	<?= $this->render("post/view.question.phtml") ?>
+<? else: ?>
+	<?= $this->render("post/view.post.phtml") ?>
+<? endif; ?>	

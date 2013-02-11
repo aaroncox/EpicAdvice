@@ -1,0 +1,11 @@
+<?= $this->render("_header.phtml"); ?>
+	<div id="column-profile-3c" class="inline-flow">
+		<?= $this->summary() ?>
+	</div>
+	<div id="column-content-3c" class="inline-flow rounded">
+		<?= $this->layout()->content ?>
+	</div>
+	<div id="column-context-3c" class="inline-flow">
+		<?= $this->context() ?>
+	</div>
+<?= $this->render("_footer.phtml"); ?>

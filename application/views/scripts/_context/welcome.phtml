@@ -1,0 +1,17 @@
+<? if($profile = EpicDb_Auth::getInstance()->getUserProfile()): ?>
+	<p>Welcome,</p>
+	<h2><?= $this->profileLink($profile) ?> <? if($profile->reputation): ?>(<?= $profile->reputation?>)<? endif; ?></h2>
+	<p>We'd like to let you know we're incredibly busy adding new features and improving the user experience. If you encounter any problems, please submit feedback!</p>
+<? else: ?>
+	<img alt="EpicAdvice.com" src="/images/design/EA300.png">
+	<h1 style="text-align: center"> 
+		World of Warcraft
+	</h1>
+	<h2 style="text-align: center">
+		Questions and Answers
+	</h2>
+	<p class="text-medium">
+		Welcome to EpicAdvice.com, please take a look around some of the <a href="/tags">popular tags</a> or the <a href="http://epicadvice.com/questions/tagged/faq">FAQ</a>. 
+		Also considering <a href="/user/login">logging in</a> with your preferred method to participate in the discussion!
+	</p>
+<? endif; ?>

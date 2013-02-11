@@ -1,0 +1,15 @@
+	<h1>Revision History
+		<?= $this->button(array(
+			'action'=>'view',
+			'post'=>$this->post,
+		), 'post', true, array(
+			'icon' => 'reply',
+			'text' => 'Back to the Question'
+		)); ?>
+	</h1>
+	<div class="" id="question">
+		<?= $this->partial("post/_revision.phtml", array("rev" => $this->post, "post" => $this->post)); ?>
+		<?php for($idx = count($this->post->revisions) - 1; $rev = $this->post->revisions[$idx]; $idx--): ?>
+			<?= $this->partial("post/_revision.phtml", array("rev" => $rev, "idx" => $idx, "post" => $this->post)); ?>
+		<?php endfor ?>
+	</div>

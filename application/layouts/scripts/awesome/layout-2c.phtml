@@ -1,0 +1,50 @@
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>  
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<?
+		// This should be moved, but we need to launch!
+		if($this->question) {
+			echo $this->htmlTag("meta", array(
+				'name' => 'description',
+				'content' => $this->question->title.", EpicAdvice.com - The World of Warcraft Question and Answer Website",
+			));
+			echo $this->htmlTag("meta", array(
+				'name' => 'keywords',
+				'content' => strtolower(str_replace(" ",", ", $this->question->title)).', World of Warcraft, WoW, Questions, Advice, Classes, Skills',
+			));
+		}
+	?>
+	<? MW_Script::load("jQuery"); ?>
+  <?= $this->headTitle("EpicAdvice.com")->setSeparator(" :: "); ?>
+  <?= $this->headScript()
+						->appendFile('/js/site.js')
+						->appendFile('/js/epicadvice.js')
+						->appendFile('/js/showdown.js')
+						->appendFile('/js/markedit.js'); 
+					?>
+  <?= $this->headLink()->prependStylesheet('/css/reset.css', 'all')
+						->appendStylesheet('/css/epicadvice.css','all')
+						->appendStylesheet('/css/epic-db.css','all')
+						->appendStylesheet("/css/ui-theme.css")
+						->appendStylesheet('/css/markedit.css','all') 
+					?>
+	</head>
+	<body>
+		<div id="menu-bar" class="">
+			<div id="menu-bar-user" class="inline-flow">
+				<?= $this->render("awesome/_menubar.phtml"); ?>
+				<div id="explore" class="inline-flow">
+					<?= $this->render("awesome/_explore.phtml")?>
+				</div>
+			</div>
+		</div>		
+		<div id="container">
+			<?= $this->render("awesome/_header.phtml"); ?>
+			<?= $this->render("awesome/_2c.phtml")?>
+			<?= $this->render("awesome/_footer.phtml"); ?>
+			<?= $this->analytics() ?>
+			<?= $this->render("_feedback.phtml"); ?>
+		</div>
+	</body>
+</html>

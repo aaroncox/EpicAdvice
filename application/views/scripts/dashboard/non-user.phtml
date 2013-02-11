@@ -1,0 +1,10 @@
+<? $this->context()
+	->widget($this->render("./_context/dashboard-no-user.phtml"))
+?>
+<? if($this->posts->count() > 0): ?>
+	<? foreach($this->posts as $post): ?>
+		<?= $this->postStub($post) ?>
+	<? endforeach;?>
+<? else: ?>
+	<h2>You aren't following anything yet!</h2>
+<? endif; ?>

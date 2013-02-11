@@ -1,0 +1,55 @@
+<a name="<?= $this->answer->id ?>"></a>
+<div class="answer ui-helper-clearfix" id="answer-<?= $this->answer->id ?>">
+	<div class="post-meta">
+		<!-- <span class="answer-status"><span style="color: #000">Status:</span> Accepted</span> -->
+		Posted on <?= $this->postLink($this->answer, array("text" => $this->timeAgo($this->answer->_created))) ?> by <?= $this->profileLink($this->answer->tags->getTag('author'))?>
+	</div>
+	<div class="ui-helper-clearfix">
+		<?= $this->voteWidget($this->answer, array("title" => "VOTES", 'class' => "post-vote")); ?>
+		<div class="post-text rounded light-bg shadowy padded-20">
+			<div style="min-height: 80px">
+				<?= $this->answer->body ?>
+			</div>
+			<div class="post-controls ui-helper-clearfix">
+				<?= $this->button(array(
+					'action'=>'edit',
+					'post'=>$this->answer,
+				), 'post', true, array(
+					'icon' => 'pencil',
+					'requirePriv' => 'edit',
+				)); ?>
+			</div>			
+		</div>
+	</div>
+	<div class="post-taglist inline-flow">
+		<? foreach($this->answer->tags as $tag): ?>
+			<? if($tag->reason != 'tag') continue;?>
+			<div class="inline-flow db-card medium-icon transparent-bg rounded">
+				<?= $this->card($tag->ref, array("class" => "medium-icon")) ?>
+			</div>
+		<? endforeach; ?>
+	</div>
+	<div class="post-author inline-flow">
+		<?= $this->card($this->answer->tags->getTag('author'), array("class" => "wide", "iconClass" => 'shadowy'))?>
+	</div>
+	<div class="post-comments">
+		<div class="comments-container" id="comments-<?= $this->answer->id ?>">
+			<div class="comments">
+				<!-- <h4 class="text-small" style="text-align: center; margin-bottom: 0">Comments...</h4> -->
+				<? foreach($this->answer->findComments() as $comment): ?>
+					<?= $this->partial("./post/_comment.phtml", array("comment" => $comment))?>
+				<? endforeach; ?>
+			</div>
+			<form class="post-comments" id="form-comments-<?= $this->answer->id ?>"></form>
+		</div>
+		<?= $this->button(array(
+			'action'=>'comment',
+			'post'=>$this->answer,
+		), 'post', true, array(
+			'icon' => 'reply',
+			'text' => 'leave comment',
+			'requirePriv' => 'create',
+			'style' => 'float: right',
+		)); ?>
+	</div>
+</div>

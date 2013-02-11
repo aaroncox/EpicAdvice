@@ -1,0 +1,10 @@
+<?= $this->render("_header.phtml"); ?>
+
+<div class='column-content-2c inline-flow rounded'>
+	<?= $this->layout()->content ?>
+</div>
+<div class='column-sidebar-2c inline-flow rounded'>
+	<?= $this->context()->insertAd($this->render('_ads/300x250.phtml'))
+	?>
+</div>
+<?= $this->render("_footer.phtml"); ?>

@@ -1,0 +1,67 @@
+<?php $this->headTitle('Login'); ?>
+<? MW_Script::load("jQuery"); ?>
+<? $this->headLink()
+		->appendStylesheet('/css/openid.css'); ?>
+<? $this->headScript()
+		->appendFile('/js/openid-jquery.js')
+		->appendFile('/js/openid-en.js') ?>
+<script type="text/javascript">
+	$(function() {
+		openid.init('openid_identifier');
+		// openid.setDemoMode(true); //Stops form submission for client javascript-only test purposes
+	});
+</script>
+<div id="content">
+	<div id="mainbar" class="padded-10">
+		<h1>Welcome back to EpicAdvice.com!</h1>
+		<p>Logging in will allow you to take advantage of site customizations, user profiles, custom feeds and all other social aspects of the site. Fear not, if you are not logged in you still can view 99% of the site!</p>
+		<?php if (MW_Auth::getInstance()->getUser()): ?>
+			<div class='ui-error'>
+				<h2>Warning - You are already logged in.</h2>
+				Please <a href="/users/logout">logout</a>.  If you log in with another account that has not yet been created, you will be adding an additional login option to your account.
+			</div>
+		<?php endif ?>
+		<h3>OpenID Login</h3>
+		<?php if ($this->message): ?>
+			<div class="ui-error"><?= $this->message ?></div>
+		<?php endif ?>
+		<p>Traditionally on EpicAdvice.com, we have used OpenID providers to log you in, so we don't have to store your login information. Listed below are some common OpenID providers, click your <a href="http://openid.net/what/">OpenID</a> account provider to login. You also can use a traditional login below, or login with Facebook and Twitter.</p>
+		<div style="padding: 10px 50px">
+			<!-- Simple OpenID Selector -->
+			<form action="/users/authenticate" method="get" id="openid_form">
+				<input type="hidden" name="action" value="verify" />
+				<fieldset>
+					<legend>Sign-in or Create New Account</legend>
+					<div id="openid_choice">
+						<p>Please click your account provider:</p>
+						<div id="openid_btns"></div>
+					</div>
+					<div id="openid_input_area">
+						<input id="openid_identifier" name="openid_identifier" type="text" value="http://" />
+						<input id="openid_submit" type="submit" value="Sign-In"/>
+					</div>
+					<noscript>
+						<p>OpenID is service that allows you to log-on to many different websites using a single indentity.
+						Find out <a href="http://openid.net/what/">more about OpenID</a> and <a href="http://openid.net/get/">how to get an OpenID enabled account</a>.</p>
+					</noscript>
+				</fieldset>
+			</form>
+			<!-- /Simple OpenID Selector -->
+		</div>
+		<h3>Social Media Login</h3>
+		<p>You can also login with your favorite social site, simply by clicking one of the links below. We will automatically create a profile for you on R2-Db.com and will never collect any private information except for your name! (which you can change from your profile edit screen)</p>
+		<div style="text-align: center; padding: 10px">
+			<a href="<?= $this->escape( $this->url(array(
+				'action'=>'twitter',
+			), 'mw_auth_user', true) ); ?>"><img src="/images/login/twitter.png" alt="Login with Twitter" height="80"/></a>
+			<a href="<?= $this->escape( $this->url(array(
+				'action'=>'facebook',
+			), 'mw_auth_user', true) ); ?>"><img src="/images/login/facebook.png" alt="Login with Facebook" height="80"/></a>
+		</div>
+		<h3>Traditional Login</h3>
+		<p>If you'd prefer to stick with the traditional username and password, feel login below. If you need an account created, visit our <a href='/user/register'>registration page</a>.</p>
+		<div style="padding: 10px 50px">
+			<?= $this->form ?>
+		</div>
+	</div>
+</div>

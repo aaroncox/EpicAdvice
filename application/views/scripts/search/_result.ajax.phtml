@@ -1,0 +1,11 @@
+<span class="ui-helper-clearfix">
+	<span class="search-result-type">
+		<?= $this->document->_type ?>
+	</span>
+	<span class="search-icon">
+		<?= $this->htmlTag("img", array("src" => $this->document->getIcon(), "class" => "border-blue")) ?>
+	</span>
+	<span class="search-result-name">
+		<?= $this->document->getName()?:$this->recordLink($this->document) ?>
+	</span>
+</span>

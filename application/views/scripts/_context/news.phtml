@@ -1,0 +1,8 @@
+<h2 class="section-header">Recent WoW News</h2>
+<div class="font-sans text-medium">
+	<ul>
+	<? foreach(EpicDb_Mongo::db('article-rss')->fetchAll(array(), array("_created" => -1), 10) as $rss): ?>
+		<li><?= $this->timeAgo($rss->_created) ?> <?= $this->postLink($rss) ?> @ <?= $this->profileLink($rss->tags->getTag('source'))?></li>
+	<? endforeach; ?>
+	</ul>
+</div>

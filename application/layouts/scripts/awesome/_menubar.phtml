@@ -1,0 +1,18 @@
+<div id="userInfo" class="inline-flow text-medium">
+	<div class="inline-flow menu-bar-item">
+		<? if($profile = MW_Auth::getInstance()->getUserProfile()): ?>
+		<script type="text/javascript">var clicky_custom = window.clicky_custom || {};clicky_custom.session = <?= json_encode(array('username' => $profile->name, 'id' => $profile->id)); ?>;</script>
+		<a href="<?php echo $this->url(array(
+			'profile'=>$profile, 
+			'action'=>'history',
+		), 'profile', true); ?>" id="topbar-recent">
+			<span style="display: inline-block; vertical-align: top; margin-top: 8px; margin-right: 3px" title="you have no new replies" class="sprite sprite-replies-off"></span>
+		</a>
+		<?= $this->profileLink($profile); ?>
+		<span title="reputation score" class="reputation-score"><?= $profile->reputation ?></span>
+		<a id="topbar-logout" href="/user/logout" name="topbar-logout">logout</a>
+		<? else: ?>
+			<a id="topbar-login" href="/users/login?returnurl=%2f" name="topbar-login">login</a>
+		<? endif; ?>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+<div id="<?=$this->comment->_type.'-'.$this->comment->id?>" class='question-comment'>
+	<div class="comment-vote-area vote-area inline-flow"><?= $this->voteWidget($this->comment, array('class'=>'comment-vote')) ?></div>
+	<div class="comment-text inline-flow">
+		<?= $this->comment->body ?>
+		–&nbsp;<strong><?= $this->profileLink($this->comment->tags->getTag('author')) ?></strong>
+		<span class="comment-date"><span title="<?= date(DATE_W3C, $this->comment->_created) ?>">(<?= $this->timeAgo($this->comment->_created)?>)</span></span>
+	</div>
+</div>

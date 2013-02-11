@@ -1,0 +1,13 @@
+RewriteEngine On
+
+RewriteRule ^users/(\d+/?.*)$ /user/$1 [R=301,NC,L]
+
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ /index.php [NC,L]
+php_flag session.auto-start 0
+php_flag magic_quotes_gpc 0
+# php_value auto_prepend_file "/mnt/hgfs/wwwroot/xhprof/external/header.php"
+# php_value auto_append_file "/mnt/hgfs/wwwroot/xhprof/external/footer.php"

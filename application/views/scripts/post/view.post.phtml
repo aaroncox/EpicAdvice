@@ -1,0 +1,102 @@
+<h1 class="section-header">
+	<? if($this->post->_type == 'answer' || $this->post->_type == 'question-comment'): ?>
+		<?= $this->postLink($this->post->_parent) ?>
+		<p class="text-large" style="margin: 0; padding: 0; margin-left: 20px"><?= $this->profileLink($this->post->tags->getTag("author")) ?> <?= $this->postStub($this->post)->whatsThis($this->post) ?></p>
+	<? else: ?>
+		<?= $this->seQuestionLink($this->post) ?>
+	<? endif; ?>
+</h1>
+<? if(APPLICATION_ENV == 'production' && $profile = EpicDb_Auth::getInstance()->getUserProfile()): ?>
+	<? if(!$profile->reputation || $profile->reputation < 200): ?>
+		<div class="ad-pre-answer">
+			<!--JavaScript Tag // Tag for network 5223: Gamer DNA Media // Website: EpicAdvice // Page: EpicAdvice.com // Placement: EpicAdvice.com-Above-728 x 90 (1899222) // created at: Mar 10, 2011 12:04:08 PM-->
+			<script language="javascript">
+			<!--
+			if (window.adgroupid == undefined) {
+				window.adgroupid = Math.round(Math.random() * 1000);
+			}
+			document.write('<scr'+'ipt language="javascript1.1" src="http://helios.gamerdna.com/addyn|3.0|5223|1899222|0|225|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp='+window.adgroupid+';misc='+new Date().getTime()+'"></scri'+'pt>');
+			//-->
+			</script><noscript><a href="http://helios.gamerdna.com/adlink|3.0|5223|1899222|0|225|ADTECH;loc=300;key=key1+key2+key3+key4" target="_blank"><img src="http://helios.gamerdna.com/adserv|3.0|5223|1899222|0|225|ADTECH;loc=300;key=key1+key2+key3+key4" border="0" width="728" height="90"></a></noscript>
+			<!-- End of JavaScript Tag -->
+			<h3>These advertisements are only displayed to non-users and users with less than 200 reputation.</h3>
+		</div>
+	<? endif; ?>
+<? endif; ?>
+<div id="<?= $this->post->_type ?>-<?= $this->post->id ?>">
+	<div class="post-meta">
+		Posted <?= $this->postLink($this->post, array("text" => $this->timeAgo($this->post->_created))) ?> by <?= $this->profileLink($this->post->tags->getTag('author')?:$this->post->tags->getTag('source'))?>
+		<? if($this->post->touched && $this->post->touchedBy instanceOf EpicDb_Mongo_Profile_User): ?>
+		, updated <?= $this->timeAgo($this->post->touched) ?> by <?= $this->profileLink($this->post->touchedBy) ?>
+		<? endif; ?>
+	</div>
+	<div class="ui-helper-clearfix">
+		<?= $this->voteWidget($this->post, array("title" => "VOTES", 'class'=>'post-vote')); ?>
+		<div class="post-text rounded light-bg padded-20 shadowy">
+			<div style="min-height: 80px">
+				<?= $this->post->body?>
+			</div>
+			<div class="post-controls ui-helper-clearfix">
+				<?= $this->button(array(
+					'action'=>'edit',
+					'post'=>$this->post,
+				), 'post', true, array(
+					'icon' => 'pencil',
+					'requirePriv' => 'edit',
+				)); ?>
+			</div>
+		</div>	
+	</div>
+	<div class="post-taglist wide inline-flow">
+		<div class="inline-flow">
+			<h3>Post involving...</h3>
+		</div>
+		<div class="post-moderate inline-flow">
+			<a href="<?= $this->escape( $this->url(array(
+				'action'=>'revisions',
+				'post'=>$this->post,
+			), 'post', true) ); ?>">History</a>
+			&nbsp;·&nbsp;
+			<a href="<?= $this->escape( $this->url(array(
+				'action'=>'source',
+				'post'=>$this->post,
+			), 'post', true) ); ?>">Source</a>
+			&nbsp;·&nbsp;
+			<a href="<?= $this->escape( $this->url(array(
+				'action'=>'flag',
+				'post'=>$this->post,
+			), 'post', true) ); ?>">Flag</a>
+			<!-- <span>|</span>
+			<a href="#">Link</a>
+			<span>|</span>
+			<a href="#">Link</a> -->
+		</div>
+		<div class="post-tags">
+			<? $visible = 0 ?>
+			<? foreach($this->post->tags as $tag): ?>
+				<? if($tag->reason != 'tag') continue;?>
+				<?= $this->card($tag->ref, array("class" => "medium-icon", "content" => array())) ?>
+				<? $visible++ ?>
+			<? endforeach; ?>
+			<? if($visible == 0): ?>
+				No tags, add some!
+			<? endif; ?>
+		</div>
+	</div>
+</div>
+<div class="post-comments">
+	<div class="comments-container" id="comments-2978">
+		<div class="comments">
+			<? foreach($this->post->findComments() as $comment): ?>
+				<?= $this->partial("./post/_comment.phtml", array("comment" => $comment)) ?>
+			<? endforeach; ?>
+		</div>
+	</div>
+</div>
+
+<? $this->context()->prepend("<h3 class='section-header'>Originally posted by...</h3>".$this->card($this->post->tags->getTag('author')?:$this->post->tags->getTag('source'), array("class" => "wide", "iconClass" => 'shadowy'))) ?>
+<? 
+	if($relatedPosts = $this->post->getRelatedPosts()) {
+		$this->context()->widget($this->partial("./_context/related-posts.phtml", array('posts' => $relatedPosts))); 		
+	}
+?>

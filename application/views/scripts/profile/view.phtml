@@ -1,0 +1,78 @@
+<? 
+	$this->headTitle($this->profile->name."'s Profile");
+	$query = array('tags' =>
+		array('$elemMatch' => array(
+			'reason' => 'author',
+			'ref' => $this->profile->createReference(),
+			)
+		)
+	);
+?>
+
+<?= $this->render("./profile/_navigation.phtml") ?>
+<div id="auto-about" class="rounded center-shadow padded-10">
+	<h1><?= $this->profileLink($this->profile) ?>'s Quick Stats...</h1>
+	<p><?= $this->autoAbout($this->profile) ?></p>
+	<div id="kpi">
+		<?= $this->kpiWidget($this->profile->reputation, array(
+			'label' => 'Reputation',
+			'description' => 'earned',
+		))?>
+		<?= $this->kpiWidget(EpicDb_Mongo::db('question')->fetchAll($query)->count(), array(
+			'label' => 'Questions',
+			'description' => 'asked',
+		))?>
+		<?= $this->kpiWidget(EpicDb_Mongo::db('answer')->fetchAll($query)->count(), array(
+			'label' => 'Answers',
+			'description' => 'to questions',
+		))?>
+		<?= $this->kpiWidget(EpicDb_Mongo::db('question-comment')->fetchAll($query)->count(), array(
+			'label' => 'Comments',
+			'description' => 'on topics',
+		))?>
+		<?= $this->kpiWidget($this->profile->getMyFollowers()->count(), array(
+			'label' => 'Followers',
+			'description' => 'following me',
+		))?>
+		<?= $this->kpiWidget(count($this->profile->following), array(
+			'label' => 'People',
+			'description' => 'i\'m following',
+		))?>
+	</div>	
+</div>
+<div id="profile-activity">
+	<div style="display: none">
+	<h2>Most Active Tags...</h2>
+	<p>
+	(these are fake...)
+	<?= $this->profileLink($this->profile, array(
+		"class" => "record-tag rounded center-shadow", 
+		"text" => 
+			$this->htmlTag("img", array("class" => "tag-icon", "src" => $this->profile->getIcon()), " ")."".
+			$this->htmlTag("span", array("class" => "tag-name font-serif"), $this->profile->name." x25")
+	)) ?>
+	<?= $this->profileLink($this->profile, array(
+		"class" => "record-tag rounded", 
+		"text" => 
+			$this->htmlTag("img", array("class" => "tag-icon", "src" => $this->profile->getIcon()), " ")."".
+			$this->htmlTag("span", array("class" => "tag-name font-serif"), $this->profile->name." x21")
+	)) ?>
+	<?= $this->profileLink($this->profile, array(
+		"class" => "record-tag rounded", 
+		"text" => 
+			$this->htmlTag("img", array("class" => "tag-icon", "src" => $this->profile->getIcon()), " ")."".
+			$this->htmlTag("span", array("class" => "tag-name font-serif"), $this->profile->name." x9")
+	)) ?>		
+	</p>
+	</div>
+	<h2 class="section-header">Recent Activity...</h2>
+	<?php echo $this->paginationControl($this->posts,
+	                                    'Sliding',
+	                                    'post/_pages.phtml'); ?>
+	<? foreach($this->posts as $post): ?>
+		<?= $this->postStub($post) ?>
+	<? endforeach; ?>
+	<?php echo $this->paginationControl($this->posts,
+	                                    'Sliding',
+	                                    'post/_pages.phtml'); ?>
+</div>

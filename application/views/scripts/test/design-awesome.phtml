@@ -1,0 +1,11 @@
+<?php echo $this->paginationControl($this->questions,
+                                    'Sliding',
+                                    'test/index_pagination_control.phtml'); ?>
+
+<? foreach($this->questions as $question): ?>
+	<?= $this->questionStub($question) ?>
+<? endforeach ?>
+
+<?php echo $this->paginationControl($this->questions,
+                                    'Sliding',
+                                    'test/index_pagination_control.phtml'); ?>

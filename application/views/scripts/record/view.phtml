@@ -1,0 +1,39 @@
+<? 
+	$this->headTitle($this->record->name." :: General Information"); 	
+	$query = array('tags' =>
+		array('$elemMatch' => array(
+			'reason' => 'tag',
+			'ref' => $this->record->createReference(),
+			)
+		)
+	);
+?>
+
+<?= $this->render("./record/_navigation.phtml") ?>
+<div id="auto-about" class="rounded center-shadow padded-10">
+	<h1 class="section-header">Quick Information about <?= $this->recordLink($this->record) ?></h1>
+	<p><?= $this->autoAbout($this->record) ?></p>
+	<div id="kpi">
+		<?= $this->kpiWidget($this->record->reputation, array(
+			'label' => 'Reputation',
+			'description' => 'earned',
+		))?>
+		<?= $this->kpiWidget(EpicDb_Mongo::db('question')->fetchAll($query)->count(), array(
+			'label' => 'Questions',
+			'description' => 'asked',
+		))?>
+		<?= $this->kpiWidget(EpicDb_Mongo::db('answer')->fetchAll($query)->count(), array(
+			'label' => 'Answers',
+			'description' => 'to questions',
+		))?>
+		<?= $this->kpiWidget(EpicDb_Mongo::db('question-comment')->fetchAll($query)->count(), array(
+			'label' => 'Comments',
+			'description' => 'on topics',
+		))?>
+		<?= $this->kpiWidget($this->record->getMyFollowers()->count(), array(
+			'label' => 'Followers',
+			'description' => 'following this',
+		))?>
+	</div>	
+</div>
+<?= $this->wikiInline($this->record, 'info') ?>

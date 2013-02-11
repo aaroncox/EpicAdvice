@@ -1,0 +1,33 @@
+<div style="text-align: right">
+	<?php if ($this->pageCount > 1): ?>
+	<div class="paginationControl font-sans inline-flow">
+	<!-- Previous page link -->
+	<?php if (isset($this->previous)): ?>
+		<div class="page-selector inline-flow rounded shadowy">
+			<a href="?page=<?= $this->previous ?>">&lt;</a>
+		</div>
+	<?php endif; ?>
+
+	<!-- Numbered page links -->
+	<?php foreach ($this->pagesInRange as $page): ?>
+			<?php if ($page != $this->current): ?>
+				<div class="page-selector inline-flow rounded shadowy">
+					<a href="?page=<?= $page ?>"><?php echo $page; ?></a>
+				</div>
+			<?php else: ?>
+				<div class="page-selector selected inline-flow rounded shadowy">
+					<?php echo $page; ?>
+				</div>
+			<?php endif; ?>
+	
+	<?php endforeach; ?>
+
+	<!-- Next page link -->
+	<?php if (isset($this->next)): ?>
+	<div class="page-selector inline-flow rounded shadowy">
+		<a href="?page=<?= $this->next ?>">&gt;</a>
+	</div>
+	<?php endif; ?>
+	</div>
+	<?php endif; ?>
+</div>

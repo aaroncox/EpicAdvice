@@ -1,0 +1,6 @@
+<? $this->headTitle($this->record->name." :: General Information"); 	?>
+<?= $this->render("./record/_navigation.phtml") ?>
+
+<? foreach($this->posts as $post): ?>
+	<?= $this->postStub($post) ?>
+<? endforeach;?>

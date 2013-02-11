@@ -1,0 +1,17 @@
+<? $this->context()
+	->widget($this->render("_context/welcome.phtml"))
+	->widget($this->render("_context/news.phtml"))
+	// ->widget($this->render("_context/popular-tags.phtml"))
+?>
+
+<?php echo $this->paginationControl($this->questions,
+                                    'Sliding',
+                                    'post/_pages.phtml'); ?>
+
+<? foreach($this->questions as $question): ?>
+	<?= $this->questionStub($question) ?>
+<? endforeach ?>
+
+<?php echo $this->paginationControl($this->questions,
+                                    'Sliding',
+                                    'post/_pages.phtml'); ?>

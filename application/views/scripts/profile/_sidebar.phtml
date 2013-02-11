@@ -1,0 +1,27 @@
+<div class="widget rounded">
+	<h2>About <?= $this->profileLink($this->profile) ?></h2>
+	<p class="detail">
+		<span class='field'>Joined:</span>
+		<?= $this->timeAgo($this->profile->creationDate) ?>
+	</p>
+	<? if($this->profile->bio): ?>
+	<p class="detail">
+		<span class='field'>Bio:</span>
+		<?= $this->profile->bio ?>
+	</p>
+	<? endif; ?>
+</div>
+<div class="widget rounded">
+	<h2>Characters</h2>
+	<? foreach($this->profile->characters as $character): ?>
+		&nbsp;&nbsp;<?= $this->armoryLink($character) ?>
+	<? endforeach; ?>
+</div>
+<div class="widget rounded">
+	<h2><?= $this->profileLink($this->profile) ?>'s Followers</h2>
+	<?= $this->iconCloud($this->profile->getMyFollowers()) ?>
+</div>
+<div class="widget rounded">
+	<h2><?= $this->profileLink($this->profile) ?> is Following</h2>
+	<?= $this->iconCloud($this->profile->following) ?>
+</div>
